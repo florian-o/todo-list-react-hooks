@@ -1,0 +1,21 @@
+.add-task{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //justify-content: center;   
+    margin: 3em auto;
+
+
+     input{
+         display: block;
+         margin: 10px;;
+        width: 450px;
+        border-radius: 5px;
+        border-color:grey;
+        height: 40px;
+        text-align: center;
+     }
+
+
+
+}
