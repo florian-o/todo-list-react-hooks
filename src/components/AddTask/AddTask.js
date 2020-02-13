@@ -2,21 +2,22 @@ import React, { useState } from 'react';
 
 import './add-tasks.scss';
 
-const AddTask = () => {
+const AddTask = ({newTask}) => {
 
-  const [task, settask] = useState('');
+  const [tasks, settasks] = useState('');
 
-  const newTask = (e) => {
+  const handleSubmit = (e) =>{
+
     e.preventDefault();
-     console.log(task);
-    settask('');
+    newTask(tasks);
+    settasks('');
   }
-
+ 
   return (
 
     <div className="add-task">
-      <form onSubmit={(e) => newTask(e)}>
-        <input type="text" value={task} placeholder = "Ajouté une tache ...." onChange={(e) => settask(e.target.value)} />
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <input type="text" value={tasks} placeholder = "Ajouté une tache ...." onChange={(e) => settasks(e.target.value)} />
         <input type="submit" value="Ajouter" />
       </form>
     </div>

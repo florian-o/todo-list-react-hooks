@@ -1,28 +1,40 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect , useContext } from 'react';
+import uuid from 'uuid';
+
 import './task-list.scss';
+
+import AddTask from '../AddTask/AddTask';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 const TaskList = () => {
 
+    const [ tasks , setTasks] = useState ([]);
+    const {isLightTheme, light, dark} = useContext(ThemeContext);
+  
+    const theme = isLightTheme ? light : dark ;
 
-    const [ task , setTask ] = useState ([
 
-        { task : 'faire les course' , id: 1 },
-        { task : 'faire tourner la machine a laver' , id: 2 },
-        { task : 'allez recuperé les enfants a la chorale' , id: 3 },
-        { task : 'allez au garage faire reparé la voiture' , id: 4 },
-    ]);
+    const newTask = (task) => {        
+        setTasks([...tasks ,{task: task,id:uuid() }])
+  }
 
+useEffect(() => {
+    console.log(tasks); 
+
+}, [tasks])
 
     return (
 
-        <div className="task-list" >
+        <div className="task-list"  style = {{ color: theme.synthax , background: theme.bg  }} >
+        <AddTask newTask={newTask}/>
             <ul>
-                {task.map( item => {
+                {tasks.map( item => {
                     return (
-                        <li className='task-lists'key={item.id}>{item.task}</li>
+                        <li onClick={(e)=> console.log(e.currentTarget)} className='task-lists'key={item.id}>{item.task}</li>
                     )
                 })}
             </ul>
+            
         </div>
 
     );

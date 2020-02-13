@@ -2,20 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    //justify-content: center;   
-    margin: 3em auto;
-
+    margin: 1em auto;   
 
      input{
          display: block;
-         margin: 10px;;
+         margin: 2.5em;
         width: 450px;
-        border-radius: 5px;
+        border-radius: 50px;
         border-color:grey;
         height: 40px;
         text-align: center;
+        font-size: 0.8em;
+
      }
-
-
+     input:last-child{
+         background-color:#648DAE;
+         border-radius: 50px;
+         
+     }
 
 }

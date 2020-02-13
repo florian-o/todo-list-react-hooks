@@ -1,21 +1,31 @@
 // == Import : npm
-import React from 'react';
+import React,{useContext} from 'react';
 
 // == Import : local
 import './app.scss';
 import Header from '../Header';
-import AddTask from '../AddTask/AddTask';
-import TaskList from '../TaskLists/TaskLilst'
+import ThemeContextProvider,{ThemeContext} from '../../components/contexts/ThemeContext'; 
+
+import TaskList from '../TaskLists/TaskLilst';
 
 
 // == Composant
-const App = () => (
-  <div id="app">
+const App = () => { 
+  
+
+  return(
+  <div id="app" >
+
+   <ThemeContextProvider> 
+     
     <Header />
-    <AddTask />
     <TaskList />
+   
+    </ThemeContextProvider>
+    
   </div>
-);
+  )
+};
 
 // == Export
 export default App;
