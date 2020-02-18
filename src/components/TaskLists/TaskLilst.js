@@ -1,43 +1,35 @@
-import React, { useState, useEffect , useContext } from 'react';
-import uuid from 'uuid';
+import React, {  useContext } from 'react';
+
 
 import './task-list.scss';
 
 import AddTask from '../AddTask/AddTask';
 import { ThemeContext } from '../contexts/ThemeContext';
+import { DataContext } from '../contexts/DataContext';
 
 const TaskList = () => {
 
-    const [ tasks , setTasks] = useState ([]);
-    const {isLightTheme, light, dark} = useContext(ThemeContext);
-  
-    const theme = isLightTheme ? light : dark ;
+  const { isLightTheme, light, dark } = useContext(ThemeContext);
+  const { task, dispatch } = useContext(DataContext);
+  const theme = isLightTheme ? light : dark;
 
+  return (
 
-    const newTask = (task) => {        
-        setTasks([...tasks ,{task: task,id:uuid() }])
-  }
+    <div className="task-list"  style = {{ color: theme.synthax , background: theme.bg}} >
+      <AddTask />
+      <ul>
 
-useEffect(() => {
-    console.log(tasks); 
+        {task.map(item => {
 
-}, [tasks])
+          return (
+            <li className="task-lists" key={item.id}> {item.task}  <span onClick={() => dispatch({type: 'REMOVE_TASK', id: item.id})}>x</span> </li> 
+          );
+        })}
+ 
+      </ul>
+    </div>
 
-    return (
-
-        <div className="task-list"  style = {{ color: theme.synthax , background: theme.bg  }} >
-        <AddTask newTask={newTask}/>
-            <ul>
-                {tasks.map( item => {
-                    return (
-                        <li onClick={(e)=> console.log(e.currentTarget)} className='task-lists'key={item.id}>{item.task}</li>
-                    )
-                })}
-            </ul>
-            
-        </div>
-
-    );
+  );
 };
 
 export default TaskList;

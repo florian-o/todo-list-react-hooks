@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import { DataContext } from '../../components/contexts/DataContext';
 
 import './add-tasks.scss';
 
-const AddTask = ({newTask}) => {
+const AddTask = () => {
 
+  const { dispatch } = useContext(DataContext);
   const [tasks, settasks] = useState('');
 
-  const handleSubmit = (e) =>{
 
+  const handleSubmit = (e) =>{
     e.preventDefault();
-    newTask(tasks);
+    dispatch({
+      type: 'ADD_TASK', task: tasks
+    });
     settasks('');
-  }
- 
+  };
+
   return (
 
     <div className="add-task">

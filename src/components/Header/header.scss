@@ -1,0 +1,19 @@
+header{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+    font-size: 1.2em;
+    height: 15vh;   
+    text-decoration: underline;
+    border-radius: 25px; 
+   color:#648DAE;   
+}
+button{
+    display: block;
+    margin: 15px;
+    border-radius: 30px;
+    font-size: .6em; 
+    
+}

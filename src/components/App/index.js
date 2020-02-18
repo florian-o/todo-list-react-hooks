@@ -1,10 +1,11 @@
 // == Import : npm
-import React,{useContext} from 'react';
+import React from 'react';
 
 // == Import : local
 import './app.scss';
-import Header from '../Header';
-import ThemeContextProvider,{ThemeContext} from '../../components/contexts/ThemeContext'; 
+import Header from '../Header/Header';
+import ThemeContextProvider from '../contexts/ThemeContext'; 
+import DataContextProvider from '../../components/contexts/DataContext';
 
 import TaskList from '../TaskLists/TaskLilst';
 
@@ -15,12 +16,12 @@ const App = () => {
 
   return(
   <div id="app" >
-
    <ThemeContextProvider> 
+     <DataContextProvider>
      
     <Header />
     <TaskList />
-   
+    </DataContextProvider>
     </ThemeContextProvider>
     
   </div>
